@@ -1,0 +1,8 @@
+{
+  "name": "mts-security",
+  "version": "1.0.0",
+  "description": "MTS Security Website",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  }
+}

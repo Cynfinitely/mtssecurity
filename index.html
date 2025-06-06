@@ -173,30 +173,134 @@
       class="services">
       <div class="container">
         <h2 data-translate="our-services">UNSERE LEISTUNGEN</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <i class="fas fa-shield-alt"></i>
+        <div class="services-container">
+          <!-- Security Services -->
+          <div class="service-category">
             <h3 data-translate="security-services">SICHERHEITSDIENSTE</h3>
+            <div class="services-grid">
+              <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h4 data-translate="object-protection">Objektschutz</h4>
+                <p data-translate="object-protection-desc">
+                  Professioneller Schutz für Ihre Immobilien und Anlagen
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h4 data-translate="asylum">Asylunterkünfte</h4>
+                <p data-translate="asylum-desc">
+                  Sicherheitsdienstleistungen für Asylunterkünfte
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4 data-translate="event-security">
+                  Veranstaltungssicherheit
+                </h4>
+                <p data-translate="event-security-desc">
+                  Umfassender Sicherheitsservice für Ihre Veranstaltungen
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-door-open"></i>
+                <h4 data-translate="reception-services">
+                  Empfangs- und Doorman-Services
+                </h4>
+                <p data-translate="reception-services-desc">
+                  Professioneller Empfangs- und Doorman-Service
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-user-shield"></i>
+                <h4 data-translate="personal-protection">Personenschutz</h4>
+                <p data-translate="personal-protection-desc">
+                  Individueller Schutz für Ihre Sicherheit
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="service-card">
-            <i class="fas fa-building"></i>
-            <h3 data-translate="object-protection">Objektschutz</h3>
+
+          <!-- Other Services -->
+          <div class="service-category">
+            <h3 data-translate="other-services">DIENSTLEISTUNGEN</h3>
+            <div class="services-grid">
+              <div class="service-card">
+                <i class="fas fa-broom"></i>
+                <h4 data-translate="office-cleaning">
+                  Büro- und Unterhaltsreinigung
+                </h4>
+                <p data-translate="office-cleaning-desc">
+                  Professionelle Reinigung für Büros und Gebäude
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h4 data-translate="maintenance-service">Hausmeisterservice</h4>
+                <p data-translate="maintenance-service-desc">
+                  Umfassender Hausmeisterservice für Ihre Immobilie
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-stairs"></i>
+                <h4 data-translate="staircase-cleaning">
+                  Treppenhausreinigung - Gemeinschaftsflächenpflege
+                </h4>
+                <p data-translate="staircase-cleaning-desc">
+                  Professionelle Reinigung von Treppenhäusern und
+                  Gemeinschaftsflächen
+                </p>
+              </div>
+              <div class="service-card">
+                <i class="fas fa-snowflake"></i>
+                <h4 data-translate="winter-service">
+                  Winterdienst - Gartenpflege
+                </h4>
+                <p data-translate="winter-service-desc">
+                  Winterdienst und professionelle Gartenpflege
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="service-card">
-            <i class="fas fa-home"></i>
-            <h3 data-translate="asylum">Asylunterkünfte</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Section -->
+    <section
+      id="work"
+      class="work">
+      <div class="container">
+        <h2 data-translate="service-images">SERVICEBILDER</h2>
+        <div class="work-grid">
+          <div class="work-item">
+            <img
+              src="images/work/1.png"
+              alt="Service Image 1" />
           </div>
-          <div class="service-card">
-            <i class="fas fa-calendar-alt"></i>
-            <h3 data-translate="event-security">Veranstaltungssicherheit</h3>
+          <div class="work-item">
+            <img
+              src="images/work/3.png"
+              alt="Service Image 2" />
           </div>
-          <div class="service-card">
-            <i class="fas fa-user-shield"></i>
-            <h3 data-translate="personal-protection">Personenschutz</h3>
+          <div class="work-item">
+            <img
+              src="images/work/4.png"
+              alt="Service Image 3" />
           </div>
-          <div class="service-card">
-            <i class="fas fa-broom"></i>
-            <h3 data-translate="cleaning">Büro- und Unterhaltsreinigung</h3>
+          <div class="work-item">
+            <img
+              src="images/work/5.png"
+              alt="Service Image 4" />
+          </div>
+          <div class="work-item">
+            <img
+              src="images/work/6.png"
+              alt="Service Image 5" />
+          </div>
+          <div class="work-item">
+            <img
+              src="images/work/clean.png"
+              alt="Service Image 6" />
           </div>
         </div>
       </div>
@@ -233,10 +337,14 @@
       <div class="container">
         <h2 data-translate="call-us">WIR RUFEN SIE AN</h2>
         <div class="contact-content">
-          <form class="contact-form">
+          <form
+            class="contact-form"
+            method="POST"
+            action="/api/send-email">
             <div class="form-group">
               <input
                 type="text"
+                name="name"
                 data-translate-placeholder="name"
                 placeholder="Name Nachname*"
                 required />
@@ -244,12 +352,14 @@
             <div class="form-group">
               <input
                 type="tel"
+                name="phone"
                 data-translate-placeholder="phone"
                 placeholder="Telefonnummer*"
                 required />
             </div>
             <div class="form-group">
               <textarea
+                name="message"
                 data-translate-placeholder="message"
                 placeholder="Ihre Nachricht*"
                 required></textarea>
@@ -272,7 +382,7 @@
             </div>
             <div class="info-item">
               <i class="fas fa-envelope"></i>
-              <p>info@mtssecurity.com</p>
+              <p>info@mts-sicherheit.com</p>
             </div>
           </div>
         </div>
