@@ -40,6 +40,9 @@ const translations = {
       "Professionelle Reinigung von Treppenhäusern und Gemeinschaftsflächen",
     "winter-service": "Winterdienst - Gartenpflege",
     "winter-service-desc": "Winterdienst und professionelle Gartenpflege",
+    "construction-cleaning": "Dienstleistungene Baureinigung",
+    "construction-cleaning-desc":
+      "Professionelle Baureinigung und Aufräumarbeiten",
     "service-images": "SERVICEBILDER",
     "completed-projects": "ABGESCHLOSSENES PROJEKT",
     "satisfied-customers": "ZUFRIEDENE KUNDEN",
@@ -89,6 +92,9 @@ const translations = {
       "Professional cleaning of staircases and common areas",
     "winter-service": "Winter Service - Garden Maintenance",
     "winter-service-desc": "Winter service and professional garden maintenance",
+    "construction-cleaning": "Construction Cleaning Services",
+    "construction-cleaning-desc":
+      "Professional construction cleaning and cleanup work",
     "service-images": "SERVICE IMAGES",
     "completed-projects": "COMPLETED PROJECTS",
     "satisfied-customers": "SATISFIED CUSTOMERS",
