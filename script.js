@@ -9,7 +9,7 @@ const translations = {
     welcome: "WILLKOMMEN BEI MTS SECURITY!",
     subtitle:
       "Ihr starker Partner für Sicherheit und Dienstleistungen in Bayern",
-    who: "MTS SECURITY WER?",
+    who: "MTS SECURITY",
     "about-text":
       "MTS SECURITY – Ihr starker Partner für Sicherheit und Dienstleistungen in Bayern",
     competence: "Kompetenz. Vertrauen. Qualität.",
@@ -40,7 +40,7 @@ const translations = {
       "Professionelle Reinigung von Treppenhäusern und Gemeinschaftsflächen",
     "winter-service": "Winterdienst - Gartenpflege",
     "winter-service-desc": "Winterdienst und professionelle Gartenpflege",
-    "construction-cleaning": "Dienstleistungene Baureinigung",
+    "construction-cleaning": "Baureinigung",
     "construction-cleaning-desc":
       "Professionelle Baureinigung und Aufräumarbeiten",
     "service-images": "SERVICEBILDER",
@@ -62,7 +62,7 @@ const translations = {
     contact: "CONTACT",
     welcome: "WELCOME TO MTS SECURITY!",
     subtitle: "Your Strong Partner for Security and Services in Bavaria",
-    who: "WHO IS MTS SECURITY?",
+    who: "MTS SECURITY",
     "about-text":
       "MTS SECURITY – Your Strong Partner for Security and Services in Bavaria",
     competence: "Competence. Trust. Quality.",
