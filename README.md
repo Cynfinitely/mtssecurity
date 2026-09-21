@@ -1,25 +1,25 @@
 # MTS Security Website
 
-A modern, responsive single-page website for MTS Security services.
+Static one-page site for MTS Security (Augsburg / Bavaria), hosted on [Vercel](https://vercel.com) at [mts-sicherheit.com](https://www.mts-sicherheit.com).
 
-## Structure
+## Local preview
 
-- `index.html` - Main HTML file
-- `styles.css` - CSS styles
-- `images/` - Directory for website images
+Open `index.html` in a browser, or from this folder:
 
-## Features
+```bash
+npx serve .
+```
 
-- Responsive design
-- Modern UI/UX
-- Multi-language support (German/English)
-- Contact form
-- Service showcase
-- Statistics display
+The contact form only works when the `/api/send-email` function is running (Vercel production/preview, or `vercel dev`).
 
-## Setup
+## Deploy
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Replace placeholder images with actual images
-4. Customize content as needed
+1. Push to `master` (Vercel Git integration deploys automatically).
+2. In the Vercel project, set environment variables:
+   - `EMAIL_USER` – SMTP mailbox (Hostinger)
+   - `EMAIL_PASSWORD` – SMTP password
+3. Custom domain and `www` redirect are configured in the Vercel dashboard.
+
+## Legal pages
+
+`impressum.html` and `datenschutz.html` contain placeholders for register data, managing director, and VAT ID. Replace the bracketed fields before treating them as final.

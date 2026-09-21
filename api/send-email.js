@@ -1,5 +1,10 @@
 const nodemailer = require("nodemailer");
 
+function clean(value, maxLen) {
+  if (typeof value !== "string") return "";
+  return value.replace(/[\u0000-\u001F<>]/g, "").trim().slice(0, maxLen);
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res
@@ -7,9 +12,19 @@ export default async function handler(req, res) {
       .json({ success: false, message: "Method not allowed" });
   }
 
-  const { name, phone, message } = req.body;
+  const honeypot = clean(req.body?.website, 100);
+  if (honeypot) {
+    return res.status(200).json({
+      success: true,
+      message:
+        "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+    });
+  }
 
-  // Validate inputs
+  const name = clean(req.body?.name, 120);
+  const phone = clean(req.body?.phone, 40);
+  const message = clean(req.body?.message, 4000);
+
   if (!name || !phone || !message) {
     return res.status(400).json({
       success: false,
@@ -17,7 +32,6 @@ export default async function handler(req, res) {
     });
   }
 
-  // Create transporter
   const transporter = nodemailer.createTransport({
     host: "smtp.hostinger.com",
     port: 465,
@@ -29,19 +43,11 @@ export default async function handler(req, res) {
   });
 
   try {
-    // Send email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: "info@mts-sicherheit.com",
       subject: "Neue Kontaktanfrage von der Website",
-      text: `
-Name: ${name}
-Telefon: ${phone}
-
-Nachricht:
-${message}
-      `,
-      replyTo: process.env.EMAIL_USER,
+      text: `Name: ${name}\nTelefon: ${phone}\n\nNachricht:\n${message}\n`,
     });
 
     return res.status(200).json({
