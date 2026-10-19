@@ -2,7 +2,36 @@
   "name": "mts-security",
   "version": "1.0.0",
   "description": "MTS Security Website",
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.9"
+    "nodemailer": "^10.1.7"
+  },
+  "scripts": {
+    "prepare": "sh -c '[ -n \"$CI\" ] || [ ! -d .git ] || husky'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "knip": "knip --no-config-hints",
+    "audit:ci": "sh scripts/npm-audit-ci.sh",
+    "check:ai-attribution": "node scripts/check-ai-attribution.mjs",
+    "test:ai-attribution": "node --test scripts/check-ai-attribution.test.mjs",
+    "test:commitlint": "node --test scripts/commitlint-config.test.mjs"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{json,css,scss,md,yml,yaml,html}": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "husky": "^9.1.7",
+    "knip": "^6.42.0",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10"
   }
 }

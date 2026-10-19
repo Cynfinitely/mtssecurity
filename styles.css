@@ -24,7 +24,13 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background: #fff;
@@ -220,19 +226,19 @@ textarea:focus-visible {
 }
 
 .hero-image-1 {
-  background-image: url("images/hero/security-radio.jpg");
+  background-image: url('images/hero/security-radio.jpg');
 }
 
 .hero-image-2 {
-  background-image: url("images/hero/facility-vacuum.jpg");
+  background-image: url('images/hero/facility-vacuum.jpg');
 }
 
 .hero-image-3 {
-  background-image: url("images/hero/officer.jpg");
+  background-image: url('images/hero/officer.jpg');
 }
 
 .hero-image-4 {
-  background-image: url("images/hero/security-vest.jpg");
+  background-image: url('images/hero/security-vest.jpg');
 }
 
 .hero .container {
@@ -346,7 +352,7 @@ textarea:focus-visible {
 .work h2::after,
 .contact h2::after,
 .services h2::after {
-  content: "";
+  content: '';
   display: block;
   width: 64px;
   height: 3px;
@@ -391,7 +397,9 @@ textarea:focus-visible {
   border: 1px solid #eee;
   flex: 1 1 200px;
   max-width: 240px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .service-card:hover {
@@ -661,7 +669,6 @@ footer {
     margin-left: auto;
     margin-right: auto;
   }
-
 }
 
 @media (max-width: 768px) {
