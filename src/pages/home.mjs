@@ -1,3 +1,4 @@
+import { asset } from '../lib/assets.mjs';
 import { html } from '../lib/html.mjs';
 
 /** Ported 1:1 from the hand-written index.html. */
@@ -34,7 +35,7 @@ export default function render() {
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
     <title>MTS Security – Ihr Partner für Sicherheit in Bayern</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="${asset('styles.css')}" />
   </head>
   <body>
     <a class="skip-link" href="#main" data-translate="skip"
@@ -473,7 +474,7 @@ export default function render() {
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="${asset('script.js')}"></script>
   </body>
 </html>
 `;

@@ -1,3 +1,4 @@
+import { asset } from '../lib/assets.mjs';
 import { html } from '../lib/html.mjs';
 
 /** Ported 1:1 from the hand-written impressum.html. */
@@ -15,7 +16,7 @@ export default function render() {
     <meta name="robots" content="index,follow" />
     <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
     <title>Impressum – MTS Security</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="${asset('styles.css')}" />
   </head>
   <body>
     <header class="navbar">
