@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 function clean(value, maxLen) {
   if (typeof value !== 'string') return '';

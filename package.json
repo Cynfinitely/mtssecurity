@@ -2,8 +2,11 @@
   "name": "mts-security",
   "version": "1.0.0",
   "description": "MTS Security Website",
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.9"
+    "nodemailer": "^10.1.7"
   },
   "scripts": {
     "prepare": "sh -c '[ -n \"$CI\" ] || [ ! -d .git ] || husky'",
