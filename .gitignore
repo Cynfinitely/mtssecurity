@@ -1,2 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build and test output
+dist/
+build/
+.next/
+coverage/
+test-results/
+
+# Environment (commit a .env.example instead)
 .env
-node_modules
+.env.*
+!.env.example
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Per-user editor and agent settings
+.idea/
+.cursor/
+.claude/settings.local.json
+
+# Vercel CLI
+.vercel/
