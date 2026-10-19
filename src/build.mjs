@@ -5,8 +5,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hubs } from './content/hubs.mjs';
+import { services } from './content/services.mjs';
 import { writeHashedAssets } from './lib/assets.mjs';
 import home from './pages/home.mjs';
+import renderHub from './pages/hub.mjs';
+import renderService from './pages/service.mjs';
 import impressum from './pages/impressum.mjs';
 import datenschutz from './pages/datenschutz.mjs';
 import notFound from './pages/not-found.mjs';
@@ -23,6 +27,7 @@ const STATIC = ['images', 'robots.txt', 'sitemap.xml'];
  */
 const HASHED = {
   'styles.css': css => css.replaceAll("url('images/", "url('/images/"),
+  'subpages.css': css => css,
   'script.js': js => js,
 };
 
@@ -32,6 +37,14 @@ const PAGES = [
   { file: 'impressum.html', render: impressum },
   { file: 'datenschutz.html', render: datenschutz },
   { file: '404.html', render: notFound },
+  ...hubs.map(hub => ({
+    file: `${hub.slug}.html`,
+    render: () => renderHub(hub),
+  })),
+  ...services.map(service => ({
+    file: `${service.slug}.html`,
+    render: () => renderService(service),
+  })),
 ];
 
 export function build() {
