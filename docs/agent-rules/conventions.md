@@ -50,8 +50,10 @@ General conventions for any agent or human working in this repo. Repo-specific n
 
 ## Repo-specific conventions
 
-- Plain HTML, CSS, and vanilla browser JS. Do not add a framework, bundler, or CDN dependency without asking.
+- Plain HTML (generated from `src/` by `src/build.mjs`), CSS, and vanilla browser JS. Do not add a framework, bundler, runtime dependency, or CDN dependency without asking.
+- Page content lives in `src/content/` as data; templates in `src/pages/` and `src/lib/layout.mjs`. Interpolate with the `html` tag (it escapes); use `raw()` only for trusted markup.
+- The homepage is design-frozen ([homepage-design-freeze.md](homepage-design-freeze.md)). Subpage styles go in `subpages.css`, never in homepage selectors.
 - API responses from `api/` use `{ success: boolean, message: string }`, with German user-facing messages. Do not leak error details to the client; log them with `console.error`.
 - Sanitize and length-limit every form field server-side (see `clean()` in `api/send-email.js`). Keep the honeypot field (`website`).
-- Images live under `images/hero/` and `images/work/`. Compress before committing.
+- Images live under `images/hero/` and `images/work/`; optimized variants for subpages in `images/opt/` (generated, committed). Alt text describes what the photo actually shows.
 - Keep the CSP in `vercel.json` strict. No inline `<script>`/`style=""` and no third-party origins.

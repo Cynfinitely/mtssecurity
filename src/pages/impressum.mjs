@@ -1,23 +1,30 @@
-<!doctype html>
+import { html } from '../lib/html.mjs';
+import { head } from '../lib/layout.mjs';
+import { pageSchema } from '../lib/schema.mjs';
+
+const meta = {
+  path: '/impressum',
+  title: 'Impressum | MTS Security',
+  description:
+    'Impressum von MTS Security, Sicherheitsdienst und Gebäudeservice in Augsburg: Anbieterkennzeichnung und Kontaktdaten.',
+};
+
+const OG_IMAGE = {
+  url: '/images/opt/og-security.jpg',
+  width: 1200,
+  height: 630,
+};
+
+/** Legal page; served at /impressum (cleanUrls). */
+export default function render() {
+  return html`<!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Impressum von MTS Security, Augsburg." />
-    <link
-      rel="canonical"
-      href="https://www.mts-sicherheit.com/impressum.html"
-    />
-    <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
-    <title>Impressum – MTS Security</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+${head({ ...meta, ogImage: OG_IMAGE, stylesheets: ['styles.css'], head: pageSchema(meta) })}
   <body>
     <header class="navbar">
       <div class="container">
         <a class="logo" href="/">
-          <img src="images/mts-security-logo.png" alt="MTS Security" />
+          <img src="/images/mts-security-logo.png" alt="MTS Security" />
         </a>
         <a class="btn" href="/">Zur Startseite</a>
       </div>
@@ -64,10 +71,12 @@
       <div class="container">
         <p>&copy; 2026 MTS Security. Alle Rechte vorbehalten.</p>
         <p class="footer-links">
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
         </p>
       </div>
     </footer>
   </body>
 </html>
+`;
+}

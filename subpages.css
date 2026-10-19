@@ -1,0 +1,435 @@
+/*
+ * Styles for the generated service and hub pages only (loaded after
+ * styles.css). Reuses the homepage tokens so the pages look like one site.
+ * Never style homepage selectors here.
+ */
+
+.nav-links a[aria-current='page'] {
+  color: var(--accent-color);
+}
+
+/* Page hero */
+.page-hero {
+  margin-top: var(--header-height);
+  background: var(--primary-color);
+  color: var(--light-text);
+  padding: 3rem 0 3.25rem;
+}
+
+.page-hero .eyebrow {
+  color: var(--accent-color);
+  margin-top: 1.5rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+.page-lead {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 44rem;
+  margin-bottom: 1.75rem;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumbs li + li::before {
+  content: '›';
+  margin-right: 0.35rem;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--light-text);
+  box-shadow: inset 0 0 0 2px var(--accent-color);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Sections */
+.page-section {
+  padding: 3.5rem 0;
+}
+
+.page-section.page-related,
+.page-section.page-faq {
+  background: var(--secondary-color);
+}
+
+.page-section > .container > h2 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.page-section > .container > h2::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: var(--accent-color);
+  margin: 0.75rem auto 0;
+}
+
+.page-intro {
+  max-width: 50rem;
+}
+
+.page-intro p {
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Service page body */
+.page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.page-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 50rem;
+}
+
+.page-body p {
+  color: #444;
+  margin-bottom: 1rem;
+  max-width: 46rem;
+}
+
+.page-body h2 {
+  color: var(--primary-color);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin: 2.25rem 0 0.9rem;
+}
+
+.check-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: #444;
+}
+
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.45rem;
+  width: 0.45rem;
+  height: 0.8rem;
+  border: solid var(--accent-dark);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list li {
+  background: var(--secondary-color);
+  border: 1px solid #e6e6e6;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.6rem;
+  color: #444;
+  min-height: 1.9rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.05rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+}
+
+.steps strong {
+  color: var(--primary-color);
+}
+
+.page-aside {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+}
+
+.page-photo {
+  margin: 0;
+}
+
+.page-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 50rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary-color);
+  list-style: none;
+  position: relative;
+  padding-right: 2rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: -0.1rem;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--accent-dark);
+}
+
+.faq-item[open] summary::after {
+  content: '–';
+}
+
+.faq-item p {
+  color: #555;
+  margin-top: 0.75rem;
+}
+
+/* Link cards (hubs and related services) */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.1rem;
+}
+
+.link-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1.4rem 1.2rem;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.link-card:hover,
+.link-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.link-card .icon {
+  width: 28px;
+  height: 28px;
+  color: var(--accent-dark);
+  margin-bottom: 0.6rem;
+}
+
+.link-card h3 {
+  hyphens: auto;
+  color: var(--primary-color);
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.link-card p {
+  color: #666;
+  font-size: 0.92rem;
+}
+
+.link-card-more {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.link-card-more::after {
+  content: ' →';
+}
+
+.hub-link {
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.hub-link a {
+  /* Darker than --accent-dark: it sits on the light grey section background
+     and needs a 4.5:1 contrast ratio. */
+  color: #6b560d;
+  font-weight: 600;
+}
+
+/* Reasons */
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.reason {
+  border-left: 3px solid var(--accent-color);
+  padding: 0.2rem 0 0.2rem 1rem;
+}
+
+.reason h3 {
+  font-size: 1.05rem;
+  color: var(--primary-color);
+  margin-bottom: 0.35rem;
+}
+
+.reason p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Closing call to action */
+.cta-band {
+  background: var(--primary-color);
+  color: var(--light-text);
+  text-align: center;
+  padding: 3.5rem 0;
+}
+
+.cta-band h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.cta-band p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+}
+
+.cta-band .cta-buttons {
+  justify-content: center;
+}
+
+.cta-address {
+  font-style: normal;
+  margin-top: 1.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.cta-address a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.cta-address a:hover {
+  text-decoration: underline;
+}
+
+/* The CTA band and the footer are both dark; keep them visually separate. */
+.subpage footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 992px) {
+  .page-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-aside {
+    position: static;
+    max-width: 32rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-hero {
+    padding: 2.25rem 0 2.5rem;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

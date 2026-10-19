@@ -174,15 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  const savedLang = localStorage.getItem('mts-lang') || 'de';
-  switchLanguage(savedLang);
+  // Only the homepage is bilingual. Service pages are German only and have no
+  // language selector, so a saved EN choice must not translate them.
+  if (document.querySelector('.language-selector')) {
+    const savedLang = localStorage.getItem('mts-lang') || 'de';
+    switchLanguage(savedLang);
 
-  document.querySelectorAll('.language-selector a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      switchLanguage(link.dataset.lang);
+    document.querySelectorAll('.language-selector a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        switchLanguage(link.dataset.lang);
+      });
     });
-  });
+  }
 
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
