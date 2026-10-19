@@ -51,3 +51,16 @@ export function html(strings, ...values) {
   }
   return raw(out);
 }
+
+/**
+ * JSON for an inline <script type="application/ld+json"> block. Escapes "<"
+ * so content can never close the script element. It is a data block, not
+ * executed script, so the CSP (script-src 'self') does not apply.
+ * @param {unknown} data
+ */
+export function jsonLd(data) {
+  const json = JSON.stringify(data, null, 2).replace(/</g, '\\u003c');
+  return raw(
+    `    <script type="application/ld+json">\n${json}\n    </script>\n`
+  );
+}

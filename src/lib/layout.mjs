@@ -49,6 +49,8 @@ export function head(meta) {
     <meta property="og:image:height" content="${meta.ogImage.height}" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/images/mts-security-logo.png" />
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 ${stylesheets.map(
   file => html`    <link rel="stylesheet" href="${asset(file)}" />
 `

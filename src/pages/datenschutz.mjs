@@ -1,18 +1,25 @@
 import { html } from '../lib/html.mjs';
 import { head } from '../lib/layout.mjs';
+import { pageSchema } from '../lib/schema.mjs';
+
+const meta = {
+  path: '/datenschutz',
+  title: 'Datenschutzerklärung | MTS Security',
+  description:
+    'Datenschutzerklärung von MTS Security, Augsburg: Hosting, Kontaktformular, keine Tracking-Cookies und Ihre Rechte nach DSGVO.',
+};
+
+const OG_IMAGE = {
+  url: '/images/opt/og-security.jpg',
+  width: 1200,
+  height: 630,
+};
 
 /** Legal page; served at /datenschutz (cleanUrls). */
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
-${head({
-  path: '/datenschutz',
-  title: 'Datenschutzerklärung | MTS Security',
-  description:
-    'Datenschutzerklärung von MTS Security, Augsburg: Hosting, Kontaktformular, keine Tracking-Cookies und Ihre Rechte nach DSGVO.',
-  ogImage: { url: '/images/opt/og-security.jpg', width: 1200, height: 630 },
-  stylesheets: ['styles.css'],
-})}
+${head({ ...meta, ogImage: OG_IMAGE, stylesheets: ['styles.css'], head: pageSchema(meta) })}
   <body>
     <header class="navbar">
       <div class="container">

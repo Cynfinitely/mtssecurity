@@ -1,15 +1,15 @@
 import { reasons } from '../content/hubs.mjs';
 import { services } from '../content/services.mjs';
 import { html } from '../lib/html.mjs';
+import { hubSchema } from '../lib/schema.mjs';
 import { ctaBand, document, faqSection, pageHero } from '../lib/layout.mjs';
 
 /** @typedef {import('../content/hubs.mjs').Hub} Hub */
 
 /**
  * @param {Hub} hub
- * @param {{ head?: unknown }} [extra]
  */
-export default function renderHub(hub, extra = {}) {
+export default function renderHub(hub) {
   const items = services.filter(service => service.category === hub.category);
 
   const cards = items.map(
@@ -83,7 +83,7 @@ ${ctaBand()}`;
       width: 1200,
       height: 630,
     },
-    head: extra.head,
+    head: hubSchema(hub),
     body,
   });
 }

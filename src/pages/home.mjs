@@ -1,6 +1,26 @@
 import { asset } from '../lib/assets.mjs';
 import { html, raw } from '../lib/html.mjs';
 import { head } from '../lib/layout.mjs';
+import { pageSchema } from '../lib/schema.mjs';
+
+const meta = {
+  path: '/',
+  title: 'Sicherheitsdienst & Gebäudeservice Augsburg | MTS Security',
+  description:
+    'MTS Security aus Augsburg: Objektschutz, Veranstaltungs- und Personenschutz, Reinigung und Hausmeisterservice in Augsburg und ganz Bayern.',
+};
+
+const OG_IMAGE = {
+  url: '/images/opt/og-security.jpg',
+  width: 1200,
+  height: 630,
+};
+
+// The first hero photo is the LCP element on mobile; CSS backgrounds are
+// discovered late, so start the download early.
+const PRELOAD = raw(
+  '    <link rel="preload" as="image" href="/images/hero/security-radio.jpg" fetchpriority="high" />\n'
+);
 
 /**
  * Homepage. The customer requires it to stay pixel-identical: change only
@@ -10,19 +30,7 @@ import { head } from '../lib/layout.mjs';
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
-${head({
-  path: '/',
-  title: 'Sicherheitsdienst & Gebäudeservice Augsburg | MTS Security',
-  description:
-    'MTS Security aus Augsburg: Objektschutz, Veranstaltungs- und Personenschutz, Reinigung und Hausmeisterservice in Augsburg und ganz Bayern.',
-  ogImage: { url: '/images/opt/og-security.jpg', width: 1200, height: 630 },
-  stylesheets: ['styles.css'],
-  // The first hero photo is the LCP element on mobile; CSS backgrounds are
-  // discovered late, so start the download early.
-  head: raw(
-    '    <link rel="preload" as="image" href="/images/hero/security-radio.jpg" fetchpriority="high" />\n'
-  ),
-})}
+${head({ ...meta, ogImage: OG_IMAGE, stylesheets: ['styles.css'], head: [PRELOAD, pageSchema(meta)] })}
   <body>
     <a class="skip-link" href="#main" data-translate="skip"
       >Zum Inhalt springen</a

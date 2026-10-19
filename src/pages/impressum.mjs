@@ -1,18 +1,25 @@
 import { html } from '../lib/html.mjs';
 import { head } from '../lib/layout.mjs';
+import { pageSchema } from '../lib/schema.mjs';
+
+const meta = {
+  path: '/impressum',
+  title: 'Impressum | MTS Security',
+  description:
+    'Impressum von MTS Security, Sicherheitsdienst und Gebäudeservice in Augsburg: Anbieterkennzeichnung und Kontaktdaten.',
+};
+
+const OG_IMAGE = {
+  url: '/images/opt/og-security.jpg',
+  width: 1200,
+  height: 630,
+};
 
 /** Legal page; served at /impressum (cleanUrls). */
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
-${head({
-  path: '/impressum',
-  title: 'Impressum | MTS Security',
-  description:
-    'Impressum von MTS Security, Sicherheitsdienst und Gebäudeservice in Augsburg: Anbieterkennzeichnung und Kontaktdaten.',
-  ogImage: { url: '/images/opt/og-security.jpg', width: 1200, height: 630 },
-  stylesheets: ['styles.css'],
-})}
+${head({ ...meta, ogImage: OG_IMAGE, stylesheets: ['styles.css'], head: pageSchema(meta) })}
   <body>
     <header class="navbar">
       <div class="container">

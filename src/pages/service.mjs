@@ -2,6 +2,7 @@ import { serviceArea } from '../content/site.mjs';
 import { hubFor } from '../content/hubs.mjs';
 import { serviceBySlug } from '../content/services.mjs';
 import { html } from '../lib/html.mjs';
+import { serviceSchema } from '../lib/schema.mjs';
 import {
   ctaBand,
   document,
@@ -37,9 +38,8 @@ function relatedCards(service) {
 
 /**
  * @param {Service} service
- * @param {{ head?: unknown }} [extra]
  */
-export default function renderService(service, extra = {}) {
+export default function renderService(service) {
   const hub = hubFor(service.category);
   const path = `/${service.slug}`;
 
@@ -115,7 +115,7 @@ ${ctaBand()}`;
       width: 1200,
       height: 630,
     },
-    head: extra.head,
+    head: serviceSchema(service, hub),
     body,
   });
 }

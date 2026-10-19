@@ -38,3 +38,12 @@ og() {
 }
 og hero/security-radio.jpg og-security
 og hero/facility-vacuum.jpg og-facility
+
+# Home-screen / manifest icons: the logo padded to a square on the brand dark.
+mkdir -p icons
+sips -p 1600 1600 --padColor 1A1A1A mts-security-logo.png --out icons/square.png >/dev/null
+sips -z 180 180 icons/square.png --out icons/apple-touch-icon.png >/dev/null
+sips -z 192 192 icons/square.png --out icons/icon-192.png >/dev/null
+sips -z 512 512 icons/square.png --out icons/icon-512.png >/dev/null
+rm icons/square.png
+echo "icons in images/icons/"
