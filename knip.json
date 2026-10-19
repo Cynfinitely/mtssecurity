@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["api/*.js", "script.js"],
+  "entry": ["api/*.js", "script.js", "src/build.mjs", "src/**/*.test.mjs"],
   "ignoreExportsUsedInFile": true,
   "ignoreBinaries": [],
   "ignoreDependencies": ["husky"]

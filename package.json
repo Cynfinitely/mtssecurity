@@ -16,7 +16,9 @@
     "audit:ci": "sh scripts/npm-audit-ci.sh",
     "check:ai-attribution": "node scripts/check-ai-attribution.mjs",
     "test:ai-attribution": "node --test scripts/check-ai-attribution.test.mjs",
-    "test:commitlint": "node --test scripts/commitlint-config.test.mjs"
+    "test:commitlint": "node --test scripts/commitlint-config.test.mjs",
+    "build": "node src/build.mjs",
+    "test": "node --test \"src/**/*.test.mjs\""
   },
   "lint-staged": {
     "*.{js,jsx,mjs,cjs,ts,tsx}": [

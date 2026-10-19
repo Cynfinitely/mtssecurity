@@ -1,4 +1,8 @@
-<!doctype html>
+import { html } from '../lib/html.mjs';
+
+/** Ported 1:1 from the hand-written impressum.html. */
+export default function render() {
+  return html`<!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -71,3 +75,5 @@
     </footer>
   </body>
 </html>
+`;
+}
