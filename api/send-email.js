@@ -1,15 +1,18 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 function clean(value, maxLen) {
-  if (typeof value !== "string") return "";
-  return value.replace(/[\u0000-\u001F<>]/g, "").trim().slice(0, maxLen);
+  if (typeof value !== 'string') return '';
+  return value
+    .replace(/[\u0000-\u001F<>]/g, '')
+    .trim()
+    .slice(0, maxLen);
 }
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
+  if (req.method !== 'POST') {
     return res
       .status(405)
-      .json({ success: false, message: "Method not allowed" });
+      .json({ success: false, message: 'Method not allowed' });
   }
 
   const honeypot = clean(req.body?.website, 100);
@@ -17,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       message:
-        "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+        'Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.',
     });
   }
 
@@ -28,12 +31,12 @@ export default async function handler(req, res) {
   if (!name || !phone || !message) {
     return res.status(400).json({
       success: false,
-      message: "Bitte füllen Sie alle Felder aus.",
+      message: 'Bitte füllen Sie alle Felder aus.',
     });
   }
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.hostinger.com",
+    host: 'smtp.hostinger.com',
     port: 465,
     secure: true,
     auth: {
@@ -45,22 +48,22 @@ export default async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "info@mts-sicherheit.com",
-      subject: "Neue Kontaktanfrage von der Website",
+      to: 'info@mts-sicherheit.com',
+      subject: 'Neue Kontaktanfrage von der Website',
       text: `Name: ${name}\nTelefon: ${phone}\n\nNachricht:\n${message}\n`,
     });
 
     return res.status(200).json({
       success: true,
       message:
-        "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+        'Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.',
     });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error('Email error:', error);
     return res.status(500).json({
       success: false,
       message:
-        "Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.",
+        'Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.',
     });
   }
 }
