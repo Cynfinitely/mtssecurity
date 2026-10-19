@@ -1,31 +1,23 @@
-import { asset } from '../lib/assets.mjs';
 import { html } from '../lib/html.mjs';
+import { head } from '../lib/layout.mjs';
 
-/** Ported 1:1 from the hand-written datenschutz.html. */
+/** Legal page; served at /datenschutz (cleanUrls). */
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Datenschutzerklärung von MTS Security, Augsburg."
-    />
-    <link
-      rel="canonical"
-      href="https://www.mts-sicherheit.com/datenschutz.html"
-    />
-    <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
-    <title>Datenschutz – MTS Security</title>
-    <link rel="stylesheet" href="${asset('styles.css')}" />
-  </head>
+${head({
+  path: '/datenschutz',
+  title: 'Datenschutzerklärung | MTS Security',
+  description:
+    'Datenschutzerklärung von MTS Security, Augsburg: Hosting, Kontaktformular, keine Tracking-Cookies und Ihre Rechte nach DSGVO.',
+  ogImage: { url: '/images/opt/og-security.jpg', width: 1200, height: 630 },
+  stylesheets: ['styles.css'],
+})}
   <body>
     <header class="navbar">
       <div class="container">
         <a class="logo" href="/">
-          <img src="images/mts-security-logo.png" alt="MTS Security" />
+          <img src="/images/mts-security-logo.png" alt="MTS Security" />
         </a>
         <a class="btn" href="/">Zur Startseite</a>
       </div>
@@ -100,8 +92,8 @@ export default function render() {
       <div class="container">
         <p>&copy; 2026 MTS Security. Alle Rechte vorbehalten.</p>
         <p class="footer-links">
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
         </p>
       </div>
     </footer>

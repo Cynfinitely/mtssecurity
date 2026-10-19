@@ -1,7 +1,7 @@
 import { asset } from '../lib/assets.mjs';
 import { html } from '../lib/html.mjs';
 
-/** Ported 1:1 from the hand-written 404.html. */
+/** 404 page (noindex). Paths are root-absolute because it is served for any URL. */
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
@@ -9,7 +9,7 @@ export default function render() {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
+    <link rel="icon" type="image/png" href="/images/mts-security-logo.png" />
     <title>Seite nicht gefunden – MTS Security</title>
     <link rel="stylesheet" href="${asset('styles.css')}" />
   </head>
@@ -17,7 +17,7 @@ export default function render() {
     <header class="navbar">
       <div class="container">
         <a class="logo" href="/">
-          <img src="images/mts-security-logo.png" alt="MTS Security" />
+          <img src="/images/mts-security-logo.png" alt="MTS Security" />
         </a>
       </div>
     </header>
@@ -25,6 +25,11 @@ export default function render() {
       <h1>Seite nicht gefunden</h1>
       <p>Die angeforderte Seite existiert nicht oder wurde verschoben.</p>
       <a class="btn" href="/">Zur Startseite</a>
+      <p class="not-found-links">
+        <a href="/sicherheitsdienst-augsburg">Sicherheitsdienst</a> ·
+        <a href="/gebaeudeservice-augsburg">Gebäudeservice</a> ·
+        <a href="/#contact">Kontakt</a>
+      </p>
     </main>
   </body>
 </html>

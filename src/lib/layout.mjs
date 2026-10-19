@@ -19,15 +19,18 @@ const NAV = [
 ];
 
 /**
+ * The <head> shared by every indexable page (homepage included).
  * @param {{
  *   path: string,
  *   title: string,
  *   description: string,
  *   ogImage: { url: string, width: number, height: number },
+ *   stylesheets?: string[],
  *   head?: unknown,
  * }} meta
  */
-function head(meta) {
+export function head(meta) {
+  const stylesheets = meta.stylesheets ?? ['styles.css', 'subpages.css'];
   return html`  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,9 +49,10 @@ function head(meta) {
     <meta property="og:image:height" content="${meta.ogImage.height}" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/images/mts-security-logo.png" />
-    <link rel="stylesheet" href="${asset('styles.css')}" />
-    <link rel="stylesheet" href="${asset('subpages.css')}" />
-${meta.head ?? ''}  </head>`;
+${stylesheets.map(
+  file => html`    <link rel="stylesheet" href="${asset(file)}" />
+`
+)}${meta.head ?? ''}  </head>`;
 }
 
 /** @param {string} currentPath */

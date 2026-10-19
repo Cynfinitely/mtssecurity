@@ -1,42 +1,28 @@
 import { asset } from '../lib/assets.mjs';
-import { html } from '../lib/html.mjs';
+import { html, raw } from '../lib/html.mjs';
+import { head } from '../lib/layout.mjs';
 
-/** Ported 1:1 from the hand-written index.html. */
+/**
+ * Homepage. The customer requires it to stay pixel-identical: change only
+ * invisible things here (head, alt text, link targets) and run the screenshot
+ * comparison described in docs/seo.md.
+ */
 export default function render() {
   return html`<!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="MTS Security – Ihr Partner für Sicherheitsdienste und Gebäudedienstleistungen in Bayern. Objektschutz, Veranstaltungssicherheit, Reinigung und Hausmeisterservice in Augsburg."
-    />
-    <meta
-      name="keywords"
-      content="Sicherheitsdienst Augsburg, Objektschutz Bayern, Veranstaltungssicherheit, Hausmeisterservice, Gebäudereinigung"
-    />
-    <link rel="canonical" href="https://www.mts-sicherheit.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
-    <meta property="og:url" content="https://www.mts-sicherheit.com/" />
-    <meta
-      property="og:title"
-      content="MTS Security – Ihr Partner für Sicherheit in Bayern"
-    />
-    <meta
-      property="og:description"
-      content="Sicherheitsdienste und Gebäudedienstleistungen in Bayern. Kompetent, zuverlässig, vor Ort in Augsburg."
-    />
-    <meta
-      property="og:image"
-      content="https://www.mts-sicherheit.com/images/hero/security-radio.jpg"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/png" href="images/mts-security-logo.png" />
-    <title>MTS Security – Ihr Partner für Sicherheit in Bayern</title>
-    <link rel="stylesheet" href="${asset('styles.css')}" />
-  </head>
+${head({
+  path: '/',
+  title: 'Sicherheitsdienst & Gebäudeservice Augsburg | MTS Security',
+  description:
+    'MTS Security aus Augsburg: Objektschutz, Veranstaltungs- und Personenschutz, Reinigung und Hausmeisterservice in Augsburg und ganz Bayern.',
+  ogImage: { url: '/images/opt/og-security.jpg', width: 1200, height: 630 },
+  stylesheets: ['styles.css'],
+  // The first hero photo is the LCP element on mobile; CSS backgrounds are
+  // discovered late, so start the download early.
+  head: raw(
+    '    <link rel="preload" as="image" href="/images/hero/security-radio.jpg" fetchpriority="high" />\n'
+  ),
+})}
   <body>
     <a class="skip-link" href="#main" data-translate="skip"
       >Zum Inhalt springen</a
@@ -89,13 +75,12 @@ export default function render() {
             href="#"
             class="active"
             data-lang="de"
-            hreflang="de"
             aria-label="Deutsch"
           >
             <img src="images/de-flag.png" alt="" class="flag-icon" />
             <span>DE</span>
           </a>
-          <a href="#" data-lang="en" hreflang="en" aria-label="English">
+          <a href="#" data-lang="en" aria-label="English">
             <img src="images/en-flag.png" alt="" class="flag-icon" />
             <span>EN</span>
           </a>
@@ -152,7 +137,7 @@ export default function render() {
           <h2 data-translate="our-services">Unsere Leistungen</h2>
           <div class="services-container">
             <div class="service-category">
-              <h3 data-translate="security-services">Sicherheitsdienste</h3>
+              <h3><a href="/sicherheitsdienst-augsburg" data-translate="security-services">Sicherheitsdienste</a></h3>
               <div class="services-grid">
                 <article class="service-card">
                   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -161,7 +146,7 @@ export default function render() {
                       d="M4 21V3h7v18H4zm9 0V9h7v12h-7zM6 5h3v2H6V5zm0 4h3v2H6V9zm0 4h3v2H6v-2z"
                     />
                   </svg>
-                  <h4 data-translate="object-protection">Objektschutz</h4>
+                  <h4><a href="/objektschutz-augsburg" data-translate="object-protection">Objektschutz</a></h4>
                   <p data-translate="object-protection-desc">
                     Professioneller Schutz für Ihre Immobilien und Anlagen
                   </p>
@@ -173,7 +158,7 @@ export default function render() {
                       d="M12 3 3 10h2v10h6v-6h2v6h6V10h2L12 3z"
                     />
                   </svg>
-                  <h4 data-translate="asylum">Asylunterkünfte</h4>
+                  <h4><a href="/sicherheitsdienst-asylunterkuenfte" data-translate="asylum">Asylunterkünfte</a></h4>
                   <p data-translate="asylum-desc">
                     Sicherheitsdienstleistungen für Asylunterkünfte
                   </p>
@@ -185,8 +170,8 @@ export default function render() {
                       d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm13 8H4v10h16V10z"
                     />
                   </svg>
-                  <h4 data-translate="event-security">
-                    Veranstaltungssicherheit
+                  <h4>
+                    <a href="/veranstaltungsschutz-augsburg" data-translate="event-security">Veranstaltungssicherheit</a>
                   </h4>
                   <p data-translate="event-security-desc">
                     Umfassender Sicherheitsservice für Ihre Veranstaltungen
@@ -199,8 +184,8 @@ export default function render() {
                       d="M12 3 4 7v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7l-8-4zm0 10.5-5-2.2V8.4L12 11l5-2.6v2.9l-5 2.2z"
                     />
                   </svg>
-                  <h4 data-translate="reception-services">
-                    Empfangs- und Doorman-Services
+                  <h4>
+                    <a href="/empfangsdienst-augsburg" data-translate="reception-services">Empfangs- und Doorman-Services</a>
                   </h4>
                   <p data-translate="reception-services-desc">
                     Professioneller Empfangs- und Doorman-Service
@@ -213,7 +198,7 @@ export default function render() {
                       d="M12 2 4 5v6c0 5.25 3.4 10.17 8 11.45C16.6 21.17 20 16.25 20 11V5l-8-3zm-1 14-3.5-3.5 1.4-1.4L11 13.2l5.1-5.1 1.4 1.4L11 16z"
                     />
                   </svg>
-                  <h4 data-translate="personal-protection">Personenschutz</h4>
+                  <h4><a href="/personenschutz-augsburg" data-translate="personal-protection">Personenschutz</a></h4>
                   <p data-translate="personal-protection-desc">
                     Individueller Schutz für Ihre Sicherheit
                   </p>
@@ -222,7 +207,7 @@ export default function render() {
             </div>
 
             <div class="service-category">
-              <h3 data-translate="other-services">Dienstleistungen</h3>
+              <h3><a href="/gebaeudeservice-augsburg" data-translate="other-services">Dienstleistungen</a></h3>
               <div class="services-grid">
                 <article class="service-card">
                   <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -231,8 +216,8 @@ export default function render() {
                       d="M15.5 4 14 6H3v2c2 .5 3.5 2.4 3.5 4.5S5 16.5 3 17v2h18v-2c-2-.5-3.5-2.4-3.5-4.5S19 8.5 21 8V6h-5.5L14 4h1.5z"
                     />
                   </svg>
-                  <h4 data-translate="office-cleaning">
-                    Büro- und Unterhaltsreinigung
+                  <h4>
+                    <a href="/bueroreinigung-augsburg" data-translate="office-cleaning">Büro- und Unterhaltsreinigung</a>
                   </h4>
                   <p data-translate="office-cleaning-desc">
                     Professionelle Reinigung für Büros und Gebäude
@@ -245,8 +230,8 @@ export default function render() {
                       d="M22.7 19.3 18 14.6l1.4-1.4-1.8-1.8 1.4-1.4-1.8-1.8 1.4-1.4L14.4 3 3 14.4l3.4 3.4 1.4-1.4 1.8 1.8 1.4-1.4 1.8 1.8 1.4-1.4 4.7 4.7c.4.4 1 .4 1.4 0l2.4-2.4c.4-.4.4-1 0-1.4z"
                     />
                   </svg>
-                  <h4 data-translate="maintenance-service">
-                    Hausmeisterservice
+                  <h4>
+                    <a href="/hausmeisterservice-augsburg" data-translate="maintenance-service">Hausmeisterservice</a>
                   </h4>
                   <p data-translate="maintenance-service-desc">
                     Umfassender Hausmeisterservice für Ihre Immobilie
@@ -259,8 +244,8 @@ export default function render() {
                       d="M11 21H3v-2h6.6L3 12.4 4.4 11 21 20.2V21h-8l4-7H9l2 7z"
                     />
                   </svg>
-                  <h4 data-translate="staircase-cleaning">
-                    Treppenhaus- und Gemeinschaftsflächen
+                  <h4>
+                    <a href="/treppenhausreinigung-augsburg" data-translate="staircase-cleaning">Treppenhaus- und Gemeinschaftsflächen</a>
                   </h4>
                   <p data-translate="staircase-cleaning-desc">
                     Professionelle Reinigung von Treppenhäusern und
@@ -274,8 +259,8 @@ export default function render() {
                       d="M11 2h2v4.1A7 7 0 1 1 5.1 13H2v-2h4.1A7.01 7.01 0 0 1 11 6.1V2zm1 6a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"
                     />
                   </svg>
-                  <h4 data-translate="winter-service">
-                    Winterdienst und Gartenpflege
+                  <h4>
+                    <a href="/winterdienst-gartenpflege-augsburg" data-translate="winter-service">Winterdienst und Gartenpflege</a>
                   </h4>
                   <p data-translate="winter-service-desc">
                     Winterdienst und professionelle Gartenpflege
@@ -288,7 +273,7 @@ export default function render() {
                       d="M7 3h10l1 4H6l1-4zm-2 6h14v2H5V9zm1 4h12l-1.2 8H7.2L6 13z"
                     />
                   </svg>
-                  <h4 data-translate="construction-cleaning">Baureinigung</h4>
+                  <h4><a href="/baureinigung-augsburg" data-translate="construction-cleaning">Baureinigung</a></h4>
                   <p data-translate="construction-cleaning-desc">
                     Professionelle Baureinigung und Aufräumarbeiten
                   </p>
@@ -306,31 +291,46 @@ export default function render() {
             <figure class="work-item">
               <img
                 src="images/work/security-jacket.jpg"
-                alt="Sicherheitsmitarbeiter im Einsatz"
+                alt="Sicherheitsmitarbeiter mit Security-Aufdruck auf einem Bahnsteig"
+                width="1200"
+                height="1200"
+                loading="lazy"
               />
             </figure>
             <figure class="work-item">
               <img
                 src="images/work/personal-protection.jpg"
-                alt="Personenschutz im Außeneinsatz"
+                alt="Personenschützer im Anzug mit Ohrhörer vor einem Fahrzeug"
+                width="1200"
+                height="1200"
+                loading="lazy"
               />
             </figure>
             <figure class="work-item">
               <img
                 src="images/work/officer.jpg"
-                alt="Objektschutz vor einem Gebäude"
+                alt="Sicherheitsmitarbeiter bewacht den Eingang eines Gebäudes"
+                width="1200"
+                height="1200"
+                loading="lazy"
               />
             </figure>
             <figure class="work-item">
               <img
                 src="images/work/cleaning-team.jpg"
-                alt="Reinigungsteam in einer Küche"
+                alt="Reinigungsteam reinigt eine Küche"
+                width="1200"
+                height="1200"
+                loading="lazy"
               />
             </figure>
             <figure class="work-item">
               <img
                 src="images/work/facility-cleaning.jpg"
-                alt="Gebäudereinigung und Facility-Service"
+                alt="Reinigungskraft mit Eimer voller Reinigungsmittel"
+                width="1200"
+                height="1200"
+                loading="lazy"
               />
             </figure>
           </div>
@@ -468,8 +468,8 @@ export default function render() {
           <span data-translate="rights">Alle Rechte vorbehalten.</span>
         </p>
         <p class="footer-links">
-          <a href="impressum.html" data-translate="imprint">Impressum</a>
-          <a href="datenschutz.html" data-translate="privacy">Datenschutz</a>
+          <a href="/impressum" data-translate="imprint">Impressum</a>
+          <a href="/datenschutz" data-translate="privacy">Datenschutz</a>
         </p>
       </div>
     </footer>
