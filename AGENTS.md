@@ -1,6 +1,6 @@
 # AGENTS.md — Workspace Facts
 
-<!-- dev-standards: v1.0.0 -->
+<!-- dev-standards: v1.1.0 -->
 
 Shared project knowledge for AI assistants. Commit this file.
 
@@ -24,6 +24,8 @@ Shared project knowledge for AI assistants. Commit this file.
 - Unused code: Knip (`npm run knip`, config `knip.json`).
 - Dependency audit: `npm run audit:ci` (`scripts/npm-audit-ci.sh`), never bare `npm audit`. Waivers: `scripts/npm-audit-allowlist.json`.
 - CI: `.github/workflows/pr-checks.yml` runs the same checks as the hooks.
+
+- Issue workflow: `/issue <number>` in Claude Code (`.claude/commands/issue.md`) plans, waits for approval, then implements, commits, pushes, and opens the PR. Other agents: "follow `.claude/commands/issue.md` for issue N". It learns the repo from this file, so keep the PR base branch, branch naming, and run-the-app commands in _Learned Workspace Facts_.
 
 ## Learned Workspace Facts
 
